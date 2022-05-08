@@ -1,0 +1,545 @@
+QPalette{background:#CFDDEE;}QGroupBox#gboxDevicePanel>QLabel{color:#505050;}/*后续任务1.添加工具栏图标 2.增加扩展键*/
+
+QWidget#frmMain,QWidget[Form="true"]{
+border:1px solid #747474;
+border-radius:0px;
+}
+
+.QFrame{
+border:1px solid #dcdcdc;
+border-radius:5px;
+}
+
+QLabel,QLineEdit,QTextEdit,QPlainTextEdit,QSpinBox,QGroupBox,QComboBox,QDateEdit,QTimeEdit,QDateTimeEdit,QSpinBox,QTreeView,QListView,QTableView,QTabWidget::pane{
+color:#505050;/*字体颜色*/
+}
+
+/*...............................设置tablewidget..................................................*/
+QTableWidget#tableWidget{
+            color: #505050;
+            gridline-color: #dcdcdc;
+            background: #ffffff;
+            selection-color: #505050;
+            selection-background-color: #d1eaf4;
+            }
+QWidget#widget_title{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #5e5e5e,stop:1 #5e5e5e);
+}
+
+QWidget#widget_title>QLabel,QWidget#widget_title>QPushButton::pane{
+color:#ffffff;/*测试—1*/
+}
+
+QWidget#widget_toolbar{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #747474,stop:1 #747474);
+}
+
+/*新加入...*/
+QWidget#widget_toolbar>QPushButton{
+border-style:none;
+border:1px solid #747474;
+color:#ffffff;/*字的颜色*/
+padding:5px;
+min-height:20px;
+border-radius:0px;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #747474,stop:1 #747474);/*两个颜色是指按键从上到下渐变的颜色*/
+}
+
+QWidget#widget_toolbar>QPushButton:hover{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #D2E3F5,stop:1 #CADDF3);
+}
+
+QWidget#widget_toolbar>QPushButton:pressed{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #00a9f0,stop:1 #00a9f0);
+}
+
+QWidget#widget_toolbar>QPushButton:checked{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #00a9f0,stop:1 #00a9f0);
+}
+
+QWidget#widget_toolbar>QPushButton:disabled{
+color:#838383;
+background:#F4F4F4;
+}
+
+QWidget#widget_toolbar>QPushButton:checked{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #00a9f0,stop:1 #00a9f0);
+
+}
+/*...新加入*/
+
+QLabel#lab_Ico,QLabel#lab_Title{
+border-radius:0px;
+color:#505050;
+background-color:rgba(0,0,0,0);
+border-style:none;
+}
+
+/*新加入...*/
+/*.............................................设置各个widget的背景颜色.......................................................*/
+QWidget#widget_2,QWidget#widget_3,QWidget#widget_4,QWidget#widget_7,QWidget#widget_6,QWidget#wdgSelect,QWidget#widgetdj,
+QWidget#widget_detectGraphicview,QWidget#widgetjinliao,QWidget#widgetzw,QWidget#widgetLogin_whiteBackground{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #ffffff,stop:1 #ffffff);
+}
+QWidget#widgetLogin_GrayBackground{
+background:#dcdcdc;
+}
+
+/*.............................................设置界面widget的背景颜色.......................................................*/
+QWidget#widget_setTitle{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #0394d3,stop:1 #0394d3);
+}
+
+QWidget#widget_graybackground{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #dcdcdc,stop:1 #dcdcdc);
+}
+
+QWidget#widget_whiteBackground{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #ffffff,stop:1 #ffffff);
+}
+/*.............................................设置界面widget的背景颜色end....................................................*/
+
+/*.............................................设置设置界面按钮....................................................*/
+QPushButton#btnSet_Min,QPushButton#btnSet_Close{
+border-style:none;
+border:1px solid #0394d3;
+color:#ffffff;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #0394d3,stop:1 #0394d3);
+}
+
+QPushButton#btnSet_Min:hover,QPushButton#btnSet_Close:hover{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #D2E3F5,stop:1 #CADDF3);
+}
+/*.............................................设置设置界面按钮end....................................................*/
+
+QToolButton::menu-indicator{
+image:None;
+}
+
+QToolButton,QWidget#widget_frm>QLabel{
+border-style:none;
+padding:10px;
+color:#505050;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #C0D3EB,stop:1 #BCCFE7);
+}
+
+QToolButton:hover,QWidget#widget_frm>QLabel:hover{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #D2E3F5,stop:1 #CADDF3);
+}
+
+QLabel[labVideo="true"]{
+color:#505050;
+border:1px solid #dcdcdc;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #C0D3EB,stop:1 #BCCFE7);
+}
+
+QLabel[labVideo="true"]:focus{
+border:1px solid #FF0000;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #D2E3F5,stop:1 #CADDF3);
+}
+
+/*.............................................border-radius:5px->0px.......................................................*/
+QLineEdit,QPlainTextEdit,QSpinBox{
+border:1px solid #dcdcdc;
+border-radius:0px;
+padding:2px;
+background:none;
+selection-background-color:#C0D3EB;
+selection-color:#324C6C;
+}
+
+QLineEdit[echoMode="2"]{
+lineedit-password-character:9679;
+}
+
+.QGroupBox{
+border:1px solid #dcdcdc;
+border-radius:0px;
+}
+
+/*.............................................设置普遍按钮.......................................................*/
+.QPushButton{
+border-style:none;
+border:1px solid #1eabec;/*#1eabec边框颜色设为蓝色*/
+color:#505050;/*字的颜色*/
+padding:0px;
+min-height:20px;
+border-radius:4px;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #ffffff,stop:1 #ffffff);/*两个颜色是指按键从上到下渐变的颜色*/
+}
+
+.QPushButton:hover{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #D2E3F5,stop:1 #CADDF3);
+}
+
+.QPushButton:pressed{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #00a9f0,stop:1 #00a9f0);
+}
+
+.QPushButton:disabled{
+color:#838383;
+background:#F4F4F4;
+}
+/*.............................................设置普遍按钮end.......................................................*/
+
+QPushButton#btnSplitterH{
+padding:2px;
+min-height:8px;
+}
+
+/*.............................................设置左右隐藏键.......................................................*/
+QPushButton#pushButton_hideleft,QPushButton#pushButton_hideright{
+border-style:none;
+border:1px solid #CFDDEE;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #CFDDEE,stop:1 #CFDDEE);
+}
+
+QPushButton#pushButton_hideleft:hover,QPushButton#pushButton_hideright:hover{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #9da0a3,stop:1 #9da0a3);
+}
+
+QPushButton#pushButton_hideleft:pressed,QPushButton#pushButton_hideright:pressed{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #D2E3F5,stop:1 #CADDF3);
+}
+
+/*....................................................................................................*/
+
+QPushButton#btnMenu,QPushButton#btnMenu_Min,QPushButton#btnMenu_Max,QPushButton#btnMenu_Close,QPushButton#btnSplitterV,QPushButton#btnSplitterH{
+border-style:none;
+border-radius:0px;
+color:#505050;
+background-color:rgba(0,0,0,0);
+}
+
+
+/*.............................................设置病人信息和检测结果按键.......................................................*/
+QPushButton#btn_Result,QPushButton#btn_Mycete,QPushButton#btn_Tri,QPushButton#btnTDCode{
+border-style:none;
+border:1px solid #ffffff;
+color:#505050;/*字的颜色*/
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #ffffff,stop:1 #ffffff);
+text-decoration:underline
+}
+
+QPushButton#btn_Result:hover,QPushButton#btn_Mycete:hover,QPushButton#btn_Tri:hover,QPushButton#btnTDCode:hover{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #D2E3F5,stop:1 #CADDF3);
+color:#00a9f0;
+text-decoration:underline
+}
+/*.................................................................................................*/
+
+QPushButton#btnToolBarStartDetect,QPushButton#btnToolBarCameraCfg{
+border-radius:0px;
+}
+
+
+QPushButton#btnMenu:hover,QPushButton#btnMenu_Min:hover,QPushButton#btnMenu_Max:hover,QPushButton#btnSplitterV:hover,QPushButton#btnSplitterH:hover{
+background-color:qlineargradient(spread:pad,x1:0,y1:1,x2:0,y2:0,stop:0 rgba(25,134,199,0),stop:1 #D2E3F5);
+}
+
+QPushButton#btnMenu_Close:hover{
+background-color:qlineargradient(spread:pad,x1:0,y1:1,x2:0,y2:0,stop:0 rgba(238,0,0,128),stop:1 rgba(238,44,44,255));
+}
+
+QCheckBox{
+color:#505050;
+spacing:2px;
+}
+
+QCheckBox::indicator{
+width:20px;
+height:20px;
+}
+
+QCheckBox::indicator:unchecked{
+image:url(:/image/checkbox_unchecked.png);
+}
+
+QCheckBox::indicator:checked{
+image:url(:/image/checkbox_checked.png);
+}
+
+QRadioButton{
+color:#505050;
+spacing:2px;
+}
+
+QRadioButton::indicator{
+width:15px;
+height:15px;
+}
+
+QRadioButton::indicator::unchecked{
+image:url(:/image/radio_normal.png);
+}
+
+QRadioButton::indicator::checked{
+image:url(:/image/radio_selected.png);
+}
+
+QSpinBox::up-button,QDateEdit::up-button,QTimeEdit::up-button,QDateTimeEdit::up-button{
+image:url(:/image/add_top.png);
+}
+
+QSpinBox::down-button,QDateEdit::down-button,QTimeEdit::down-button,QDateTimeEdit::down-button{
+image:url(:/image/add_bottom.png);
+}
+
+QComboBox,QDateEdit,QTimeEdit,QDateTimeEdit,QSpinBox{
+border-radius:3px;
+padding:3px 5px 3px 5px;
+border:1px solid #dcdcdc;
+background:none;
+selection-background-color:#C0D3EB;
+selection-color:#505050;
+}
+
+QComboBox::drop-down,QDateEdit::drop-down,QTimeEdit::drop-down,QDateTimeEdit::drop-down{
+subcontrol-origin:padding;
+subcontrol-position:top right;
+width:15px;
+border-left-width:1px;
+border-left-style:solid;
+border-top-right-radius:3px;
+border-bottom-right-radius:3px;
+border-left-color:#dcdcdc;
+}
+
+QComboBox::down-arrow,QDateEdit::down-arrow,QTimeEdit::down-arrow,QDateTimeEdit::down-arrow{
+image:url(:/image/add_bottom.png);
+}
+
+QComboBox::disabled{
+background:#F0F0F0;
+}
+
+QMenu{
+color:#505050;
+background-color:#cfddee;  /*#5e5e5e*/
+margin:2px;
+}
+
+QMenu::item{
+padding:3px 20px 3px 20px;
+}
+
+QMenu::indicator{
+width:13px;
+height:13px;
+}
+
+QMenu::item:selected{
+color:#505050;
+border:0px solid #dcdcdc;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #C0D3EB,stop:1 #BCCFE7);
+}
+
+QMenu::separator{
+height:1px;
+background:#dcdcdc;
+}
+
+QProgressBar{
+background:#BCCFE7;
+border-radius:5px;
+text-align:center;
+border:1px solid #C0D3EB;
+}
+
+QProgressBar::chunk{
+width:5px;
+margin:0.5px;
+background-color:#D2E3F5;
+}
+
+QSlider::groove:horizontal,QSlider::add-page:horizontal{
+height:8px;
+border-radius:3px;
+background:#BCCFE7;
+}
+
+QSlider::sub-page:horizontal{
+height:8px;
+border-radius:3px;
+background:#CADDF3;
+}
+
+QSlider::handle:horizontal{
+width:13px;
+margin-top:-3px;
+margin-bottom:-3px;
+border-radius:6px;
+background:qradialgradient(spread:pad,cx:0.5,cy:0.5,radius:0.5,fx:0.5,fy:0.5,stop:0.6 #FFFFFF,stop:0.8 #BCCFE7);
+}
+
+QSlider::groove:vertical,QSlider::sub-page:vertical{
+width:8px;
+border-radius:3px;
+background:#BCCFE7;
+}
+
+QSlider::add-page:vertical{
+width:8px;
+border-radius:3px;
+background:#CADDF3;
+}
+
+QSlider::handle:vertical{
+height:13px;
+margin-left:-2px;
+margin-right:-3px;
+border-radius:6px;
+background:qradialgradient(spread:pad,cx:0.5,cy:0.5,radius:0.5,fx:0.5,fy:0.5,stop:0.6 #FFFFFF,stop:0.8 #BCCFE7);
+}
+/*QScrollBar背景颜色修改*/
+QScrollBar:vertical{
+width:10px;
+background-color:rgba(0,0,0,0%);
+margin: 0px 0px 0px 0px;
+}
+
+QScrollBar:horizontal{
+height:10px;
+background-color:rgba(0,0,0,0%);
+margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:vertical,QScrollBar::handle:horizontal{
+width:10px;
+background:#d2eaf4;
+}
+
+QScrollBar::handle:vertical:hover,QScrollBar::handle:horizontal:hover{
+width:10px;
+background:#d2eaf4;
+}
+
+QScrollBar::add-line:vertical{
+height:10px;
+width:10px;
+subcontrol-position:bottom;
+subcontrol-origin:margin;
+/*border-image:url(:/image/add_bottom.png);*/
+background:#ffffff;
+
+}
+
+QScrollBar::add-line:horizontal{
+height:10px;
+width:10px;
+subcontrol-position:right;
+subcontrol-origin:margin;
+background:#ffffff;
+}
+
+QScrollBar::sub-line:vertical{
+height:10px;
+width:10px;
+subcontrol-position:top;
+subcontrol-origin:margin;
+background:#ffffff;
+}
+
+QScrollBar::sub-line:horizontal{
+height:10px;
+width:10px;
+subcontrol-position:left;
+subcontrol-origin:margin;
+background:#ffffff;
+}
+
+QScrollBar::add-page:vertical,QScrollBar::sub-page:vertical,QScrollBar::add-page:horizontal,QScrollBar::sub-page:horizontal{
+width:10px;
+background:#ffffff;
+}
+
+QScrollArea{
+border:0px;
+}
+
+QTreeView,QListView,QTableView,QTabWidget::pane{
+border:1px solid #dcdcdc;
+selection-background-color:#D2E3F5;
+selection-color:#505050;
+alternate-background-color:#CADDF3;
+}
+
+QTableView::item:selected,QListView::item:selected,QTreeView::item:selected{
+color:#505050;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #C0D3EB,stop:1 #BCCFE7);
+}
+
+QTableView::item:hover,QListView::item:hover,QTreeView::item:hover{
+color:#505050;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #D2E3F5,stop:1 #CADDF3);
+}
+
+QTableView::item,QListView::item,QTreeView::item{
+padding:5px;
+margin:0px;
+}
+
+QHeaderView::section,QTableCornerButton:section{
+padding:3px;
+margin:0px;
+color:#505050;
+border:1px solid #dcdcdc;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #D2E3F5,stop:1 #CADDF3);
+}
+
+QTabBar::tab{
+border-radius:5px;
+border:1px solid #dcdcdc;
+color:#505050;
+min-width:55px;
+min-height:20px;
+padding:3px 8px 3px 8px;
+margin:1px;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #D2E3F5,stop:1 #CADDF3);
+}
+
+QTabBar::tab:selected,QTabBar::tab:hover{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #C0D3EB,stop:1 #BCCFE7);
+}
+
+QStatusBar::item{
+border:0px solid #C0D3EB;
+border-radius:3px;
+}
+
+QToolBox::tab,QGroupBox#gboxDevicePanel{
+padding:3px;
+border-radius: 5px;
+color:#505050;
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #C0D3EB,stop:1 #BCCFE7);
+}
+
+QToolTip{
+padding:3px;
+border-radius: 5px;
+color:#ffffff;
+background-color:#5e5e5e;
+}
+
+QToolBox::tab:selected{
+background:qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #D2E3F5,stop:1 #CADDF3);
+}
+
+
+
+QLineEdit::disabled{
+   background:#F0F0F0;
+}
+
+QTableView#tabViewData QTableCornerButton::section {
+     background: qlineargradient(spread:pad,x1:0,y1:0,x2:0,y2:1,stop:0 #ffffff,stop:1 #ffffff);
+ }
+
+QTableView#tabViewData::item:selected {
+    background-color:#d1eaf4;
+    border: 1px solid #00a9f0; 
+    border-width:1px 0px 1px 0px;
+}
+
+
+
