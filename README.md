@@ -1,2 +1,2 @@
 
-For a detailed installation guide, check out this tutorial (doc/Tutorial_RGCode.pdf)
+For a detailed installation guide, check out this tutorial (doc/Tutorial.pdf)
