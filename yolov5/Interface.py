@@ -1,10 +1,8 @@
 import os
-
 import numpy as np
 import glob
 import torch
 import torch.nn as nn
-
 from models.common import Conv
 from utils.base import non_max_suppression
 import cv2
@@ -26,13 +24,24 @@ class Ensemble(nn.ModuleList):
 
 def getOneChannel(imgPath, idx):
     img = cv2.imdecode(np.fromfile(imgPath, dtype=np.uint8), -1)
-    return img[:, :, idx]
+    #return img[:, :, idx]
+    if len(img.shape) == 2:
+        return img
+    else:       
+        maxnum = int(0)
+        maxavg = 0
+        for k in range(3):
+            value = np.mean(img[:, :, k])
+            if value > maxavg:
+                maxavg = value
+                maxnum = k       
+        return img[:, :, int(maxnum)]
 
 
 class Detect:
     def __init__(self, weights_file):
 
-        # 设置输入输出参数
+        # Set parameters of input and output 
         self.weights = weights_file
         self.input_size = 512
         self.num_classes = 1
@@ -104,10 +113,10 @@ class Detect:
     def GetImg(self, image_path, image_name, exten):
 
         # Args:
-        #    image_path: 图片路径
-        #    exten: 图片后缀
+        #    image_path: Picture path
+        #    exten: File suffix
 
-        # Returns: 得到的图片 (channel, w, h)
+        # Returns: Obtained Pictures (channel, w, h)
         
         ext = "*." + exten
         filenames = sorted(glob.glob(os.path.join(image_path, ext)))
@@ -141,8 +150,17 @@ class Detect:
         stride = 462
         intput_w = 512
         intput_h = 512
-        
+
+
         original_image = self.GetImg(image_path, image_name, exten)
+
+        ori_w = original_image.shape[2]
+        ori_h = original_image.shape[1]
+        if original_image.shape[1]<512 or original_image.shape[2]<512:
+            original_image = np.pad(original_image, ((0,0) ,(0,intput_h-original_image.shape[1]),(0,intput_w-original_image.shape[2])), 'constant')
+        # print(original_image.shape)
+        # print(original_image.shape[1])
+        # print(original_image.shape[2])
 
         BoxList = []
         for x in list(range(0, original_image.shape[2] - intput_w, stride)) + [original_image.shape[2] - intput_w]:
@@ -151,6 +169,7 @@ class Detect:
                 # 
                 bboxes = self._predict(img)
                 
+                print("bboxes",bboxes.shape)
 
                 for num in bboxes:
                     w = num[2] - num[0]
@@ -168,31 +187,44 @@ class Detect:
         # print('Begin Summary.... (This may take some time)')
 
         BoxNums = np.array(BoxList)
-        keep = self._py_cpu_nms(BoxNums)
-        BoxNums = BoxNums[keep]
-        BoxConf = BoxNums[:, 4]
-        BoxNums = BoxNums[:, 0:4]
-        BoxNums = np.round(BoxNums)
-        BoxNums[:, 2] = BoxNums[:, 2] - BoxNums[:, 0] + 1
-        BoxNums[:, 3] = BoxNums[:, 3] - BoxNums[:, 1] + 1
-        BoxNums = BoxNums.astype(np.int32)
-        res = np.column_stack((BoxNums, BoxConf))
-        np.savetxt(csv_path, res, delimiter=",")
+
+        if not BoxNums.any():
+            res = np.array([])
+            np.savetxt(csv_path, res, delimiter=",")
+        else:
+            keep = self._py_cpu_nms(BoxNums)
+            BoxNums = BoxNums[keep]
+            BoxConf = BoxNums[:, 4]
+            BoxNums = BoxNums[:, 0:4]
+            BoxNums = np.round(BoxNums)
+            keep2 = []
+            for m in range(BoxNums.shape[0]):
+                if (BoxNums[m][0] >= 0 and BoxNums[m][0] < ori_w and
+                   BoxNums[m][1] >= 0 and BoxNums[m][1] < ori_h and
+                   BoxNums[m][2] >= 0 and BoxNums[m][2] < ori_w and
+                   BoxNums[m][3] >= 0 and BoxNums[m][3] < ori_h):
+                    keep2.append(m)
+            BoxNums = BoxNums[keep2]
+            BoxConf = BoxConf[keep2]
+            BoxNums[:, 2] = BoxNums[:, 2] - BoxNums[:, 0] + 1
+            BoxNums[:, 3] = BoxNums[:, 3] - BoxNums[:, 1] + 1
+            BoxNums = BoxNums.astype(np.int32)
+            res = np.column_stack((BoxNums, BoxConf))
+
+            np.savetxt(csv_path, res, delimiter=",")
 
 
 def interface(image_path,csv_path):
-    
+
     image_path, image_name=os.path.split(image_path[0])
     exten = image_name[-3:] #tif  jpg  png
-
     yolov5.testBigImg(image_path, image_name, exten, csv_path[0])
-    
+
     return 1
 
 
 weights = "C:/pmse_plus.pt"
 yolov5 = Detect(weights)
-
 testimg = np.zeros((5, 512, 512), dtype=np.uint8)
 yolov5._predict(testimg)
 print("it is ok")
