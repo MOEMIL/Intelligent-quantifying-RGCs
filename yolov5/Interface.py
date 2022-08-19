@@ -110,50 +110,39 @@ class Detect:
 
         return output[0].detach().numpy()
 
-    def GetImg(self, image_path, image_name, exten):
-
-        # Args:
+    def GetImg(self, image_path):
+	    # Args:
         #    image_path: Picture path
-        #    exten: File suffix
-
         # Returns: Obtained Pictures (channel, w, h)
-        
-        ext = "*." + exten
-        filenames = sorted(glob.glob(os.path.join(image_path, ext)))
-        filenames = [f for f in filenames if os.path.isfile(f)]
-        filenames.sort()
-        
-        
-        if len(filenames)<5:
-            img1 = getOneChannel(os.path.join(image_path, image_name), 2)
-            img2 = getOneChannel(os.path.join(image_path, image_name), 2)
-            img3 = getOneChannel(os.path.join(image_path, image_name), 2)
-            img4 = getOneChannel(os.path.join(image_path, image_name), 2)
-            img5 = getOneChannel(os.path.join(image_path, image_name), 2)
+       
+        if (len(image_path)==5):
+            img1 = getOneChannel(image_path[0], 2)
+            img2 = getOneChannel(image_path[1], 2)
+            img3 = getOneChannel(image_path[2], 2)
+            img4 = getOneChannel(image_path[3], 2)
+            img5 = getOneChannel(image_path[4], 2)
         else:
-            img1 = getOneChannel(filenames[0], 2)
-            img2 = getOneChannel(filenames[1], 2)
-            img3 = getOneChannel(filenames[2], 2)
-            img4 = getOneChannel(filenames[3], 2)
-            img5 = getOneChannel(filenames[4], 2)
+            img1 = getOneChannel(image_path[0], 2)
+            img2 = getOneChannel(image_path[0], 2)
+            img3 = getOneChannel(image_path[0], 2)
+            img4 = getOneChannel(image_path[0], 2)
+            img5 = getOneChannel(image_path[0], 2)
         
-
-
 
         img = cv2.merge([img1, img2, img3, img4, img5])
         # img = cv2.merge([getOneChannel(image_path + '/1.' +exten,2)img1[:, :, 2], img2[:, :, 2], img3[:, :, 2], img4[:, :, 2], img5[:, :, 2]])
         img = img.transpose(2, 0, 1)
         return img
 
-    def testBigImg(self, image_path, image_name, exten, csv_path):
+    def testBigImg(self, image_path, csv_path):
         
         stride = 462
         intput_w = 512
         intput_h = 512
-
-
-        original_image = self.GetImg(image_path, image_name, exten)
-
+	
+	
+        original_image = self.GetImg(image_path)
+	
         ori_w = original_image.shape[2]
         ori_h = original_image.shape[1]
         if original_image.shape[1]<512 or original_image.shape[2]<512:
@@ -161,7 +150,7 @@ class Detect:
         # print(original_image.shape)
         # print(original_image.shape[1])
         # print(original_image.shape[2])
-
+	
         BoxList = []
         for x in list(range(0, original_image.shape[2] - intput_w, stride)) + [original_image.shape[2] - intput_w]:
             for y in list(range(0, original_image.shape[1] - intput_h, stride)) + [original_image.shape[1] - intput_h]:
@@ -170,7 +159,7 @@ class Detect:
                 bboxes = self._predict(img)
                 
                 print("bboxes",bboxes.shape)
-
+	
                 for num in bboxes:
                     w = num[2] - num[0]
                     h = num[3] - num[1]
@@ -180,14 +169,14 @@ class Detect:
                         continue
                     if num[4]<0.2:
                         continue
-
+	
                     temp = np.array([num[0] + x, num[1] + y, num[2] + x, num[3] + y, num[4], num[5]])
                     BoxList.append(temp)
-
+	
         # print('Begin Summary.... (This may take some time)')
-
+	
         BoxNums = np.array(BoxList)
-
+	
         if not BoxNums.any():
             res = np.array([])
             np.savetxt(csv_path, res, delimiter=",")
@@ -210,15 +199,18 @@ class Detect:
             BoxNums[:, 3] = BoxNums[:, 3] - BoxNums[:, 1] + 1
             BoxNums = BoxNums.astype(np.int32)
             res = np.column_stack((BoxNums, BoxConf))
-
+	
             np.savetxt(csv_path, res, delimiter=",")
 
 
 def interface(image_path,csv_path):
+    image_pathnew = []
+    if (len(image_path) == 5):
+        for k in range(5):
+            image_pathnew.append(image_path[k].decode('utf-8'))
+        image_path = image_pathnew
 
-    image_path, image_name=os.path.split(image_path[0])
-    exten = image_name[-3:] #tif  jpg  png
-    yolov5.testBigImg(image_path, image_name, exten, csv_path[0])
+    yolov5.testBigImg(image_path, csv_path[0])
 
     return 1
 
